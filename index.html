@@ -114,11 +114,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
       }
 
-      .hero-content {
-        max-width: 800px;
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero-text {
+        text-align: center;
+        width: 100%;
       }
 
       .hero-title {
@@ -150,6 +159,18 @@
         border-radius: 4px;
         margin-top: 2rem;
       }
+
+      .hero-image {
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
       /* CSS:HERO-END */
 
       /* CSS:ABOUT-START */
@@ -157,9 +178,33 @@
         background-color: #0d2238;
       }
 
-      .about-content {
+      .about-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .about-text-box {
+        flex: 1;
         color: #b0bec5;
         font-size: 1.05rem;
+      }
+
+      .about-text-box p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .about-image-box {
+        flex: 1;
+        width: 100%;
+      }
+
+      .about-image-box img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
 
       .about-placeholder {
@@ -167,6 +212,21 @@
         background-color: rgba(79, 195, 247, 0.1);
         border-left: 4px solid #4fc3f7;
         border-radius: 4px;
+      }
+
+      @media (min-width: 768px) {
+        .about-wrapper {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .about-text-box {
+          order: 1;
+        }
+
+        .about-image-box {
+          order: 2;
+        }
       }
       /* CSS:ABOUT-END */
 
@@ -265,6 +325,10 @@
           font-size: 1.5rem;
         }
 
+        .hero-image {
+          max-width: 700px;
+        }
+
         .section-title {
           font-size: 2.5rem;
         }
@@ -290,6 +354,10 @@
         .hero-title {
           font-size: 4rem;
         }
+
+        .hero-image {
+          max-width: 800px;
+        }
       }
       /* CSS:RWD-END */
     </style>
@@ -313,19 +381,33 @@
 
       <main>
         <!-- SECTION:HERO-START -->
-        <section id="hero" class="section section-hero">
+        <section id="hero" class="section section-hero hero-gradient">
           <div class="container">
-            <div class="hero-content">
-              <h1 class="hero-title">歡迎來到我的個人網站</h1>
-              <p class="hero-subtitle">Frontend Developer · 前端開發工程師</p>
-              <p class="hero-description">
-                這裡是主視覺區域，之後會放上一句話自我介紹、核心職稱與角色說明，以及行動呼籲（例如：瀏覽作品集、下載履歷、聯絡我等）。
-              </p>
-              <p class="hero-note">
-                開發者提示：之後會用 Section SDD 的 Prompt
-                產生正式文案與版面，再把整個 section 貼回來取代這一區（覆蓋
-                SECTION:HERO-START 與 SECTION:HERO-END 之間的內容）。
-              </p>
+            <div class="hero-inner">
+              <!-- 文案（上方） -->
+              <div class="hero-text">
+                <h1 class="hero-title">歡迎來到我的個人網站</h1>
+                <p class="hero-subtitle">Frontend Developer · 前端開發工程師</p>
+
+                <p class="hero-description">
+                  這裡是主視覺區塊，用來展示你的核心定位、個人品牌標語，並強調專業技能與特色。
+                  接下來你可以加入行動呼籲（例如作品集、履歷、聯絡方式等）。
+                </p>
+
+                <p class="hero-note">
+                  開發者提示：日後可用 Section SDD Prompt
+                  自動生成正式文案與設計，再整段貼回來覆蓋此段內容。
+                </p>
+              </div>
+
+              <!-- 圖片（下方） -->
+              <div class="hero-image">
+                <img
+                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
+                  alt="前端工程師進行開發的工作場景"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -339,18 +421,31 @@
         >
           <div class="container">
             <h2 id="about-heading" class="section-title">關於我</h2>
-            <div class="about-content">
-              <div class="about-placeholder">
+
+            <div class="about-wrapper">
+              <!-- 左側介紹文字 -->
+              <div class="about-text-box">
                 <p>
-                  這裡目前是 About
-                  區的占位內容，未來會包含個人背景介紹、工作經歷、學習歷程等資訊。
+                  我是一名專注於前端技術的工程師,擅長以直覺的互動設計與乾淨易維護的程式結構,
+                  打造具有品質的 Web
+                  介面。我的開發流程強調可讀性、模組化與使用者體驗導向,
+                  並持續吸收新工具與框架,精進程式架構能力。
                 </p>
+
                 <p>
-                  之後會用 Section SDD 的 Prompt
-                  產生正式內容與版面設計，請把新的 section 程式碼整段貼在
-                  SECTION:ABOUT-START 與 SECTION:ABOUT-END
-                  兩個註解中間，完全取代現在這一區。
+                  目前的興趣領域包括:前端架構、設計系統、Tailwind
+                  工具鏈整合、API 資料串接與前後端協作流程最佳化。
+                  我喜歡探索學習方式,也樂於將經驗分享給團隊夥伴。
                 </p>
+              </div>
+
+              <!-- 右側圖片 -->
+              <div class="about-image-box">
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+                  alt="工程師在筆電前專注進行前端開發的示意照"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
